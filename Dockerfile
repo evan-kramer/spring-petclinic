@@ -31,4 +31,5 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28"
 # Create key/credential 
 # Add credential in Jenkins (Manage Jenkins > Configure System > Add SonarQube server (name, URL [http://sonarqube:9000], credential))
 # Set up SonarQube install (Manage Jenkins > Global Tool Configuration > SonarQube Scanner installations (name, install automatically from Maven Central)
+# Edit properties in /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqube-scanner/conf/sonar-scanner.properties (username and password)
 # Create Jenkinsfile and set up pipeline
