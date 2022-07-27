@@ -19,8 +19,8 @@ pipeline {
 					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
                     println "${env.SONAR_HOST_URL}"
-					sh '${scanner_home}/bin/sonar-scanner'
-					// sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+					// sh '${scanner_home}/bin/sonar-scanner'
+					sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
                 }
             }
         }
