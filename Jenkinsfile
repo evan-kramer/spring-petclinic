@@ -15,10 +15,10 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('sonar_server') {
-                    sh 'mvn clean package sonar:sonar'
+                    // sh 'mvn clean package sonar:sonar'
 					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
-                    // sh '${scanner_home}/bin/sonar-scanner'
+                    sh '${scanner_home}/bin/sonar-scanner'
                 }
             }
         }
