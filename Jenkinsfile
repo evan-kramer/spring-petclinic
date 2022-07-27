@@ -12,9 +12,13 @@ pipeline {
         stage('SonarQube') {
             environment {
                 def scanner_home = tool 'sonarqube-scanner'
+				//def scanner_home = tool name: 'sonarqube-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
             }
             steps {
                 withSonarQubeEnv(installationName: 'sonar_server') {
+					sh 'export SONAR_RUNNER_HOME=/opt/sonar-runner'
+					sh 'export PATH=$PATH:$SONAR_RUNNER_HOME/bin'
+					
 					sh 'echo ${scanner_home}'
 					sh 'echo ${JAVA_HOME}'
                     sh 'ls -l /var/jenkins_home/'
