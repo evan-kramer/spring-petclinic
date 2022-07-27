@@ -25,7 +25,7 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28"
 # docker run --name 17646-assignment1 -d -p 8080:8080 -p 50000:50000 -p 8081:8081 --network 17646-assignment1 --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --env JAVA_OPTS="-Dhudson.plugins.git.GitSCM.ALLOW_LOCAL_CHECKOUT=true" --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro --restart=on-failure jenkins-17646-assignment1
 
 # To run third container (SonarQube)
-# docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+# docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 --network 17646-assignment1 sonarqube:latest
 
 # Log in as admin and then change password
 # Create key/credential 

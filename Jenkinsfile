@@ -19,31 +19,32 @@ pipeline {
                 withSonarQubeEnv(installationName: 'sonar_server') {
 					sh 'export SONAR_RUNNER_HOME=/opt/sonar-runner'
 					sh 'export PATH=$PATH:$SONAR_RUNNER_HOME/bin'
-					
-					sh 'echo ${scanner_home}'
-					sh 'echo ${JAVA_HOME}'
-                    sh 'ls -l /var/jenkins_home/tools'
-					sh 'ls -l ${scanner_home}/bin'
-                    //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-					// sh './mvnw clean sonar:sonar'
+					//sh 'echo ${scanner_home}'
+					//sh 'echo ${JAVA_HOME}'
+                    //sh 'ls -l /var/jenkins_home/tools'
+					//sh 'ls -l ${scanner_home}/bin'
 					sh '${scanner_home}/bin/sonar-scanner'
                 }
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml -B -DskipTests -Dserver.port=8081 clean package'
+                //sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml -B -DskipTests -Dserver.port=8081 clean package'
+				sh 'mvn -B -DskipTests -Dserver.port=8081 clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml test'
+                //sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml test'
+				sh 'mvn test'
             }
         }
         stage('Deliver') { 
             steps {
-                sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml package'
-                sh 'java -Dserver.port=8081 -jar /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/target/spring-petclinic-2.7.0-SNAPSHOT.jar &'
+                //sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml package'
+                sh 'mvn package'
+				//sh 'java -Dserver.port=8081 -jar /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/target/spring-petclinic-2.7.0-SNAPSHOT.jar &'
+				sh 'java -Dserver.port=8081 -jar target/spring-petclinic-2.7.0-SNAPSHOT.jar &'
             }
         }
     }
