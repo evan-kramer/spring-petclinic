@@ -15,13 +15,10 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('sonar_server') {
-                    sh 'echo ${scanner_home}'
+                    sh 'mvn clean package sonar:sonar'
+					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
-                     // sh 'su -' 
-                     // sh 'apt install wget -y'
-                     // sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip'
-                     // sh 'unzip sonar-scanner-cli-4.2.0.1873-linux.zip'
-                    sh '${scanner_home}/bin/sonar-scanner'
+                    // sh '${scanner_home}/bin/sonar-scanner'
                 }
             }
         }
