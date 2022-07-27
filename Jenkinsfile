@@ -20,6 +20,7 @@ pipeline {
 					sh 'export SONAR_RUNNER_HOME=/opt/sonar-runner'
 					sh 'export PATH=$PATH:$SONAR_RUNNER_HOME/bin'
 					sh 'echo ${scanner_home}'
+					sh 'echo ${MAVEN_HOME}'
 					sh 'cat ${scanner_home}/conf/sonar-scanner.properties'
 					sh '${scanner_home}/bin/sonar-scanner'
                 }
