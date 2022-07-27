@@ -22,7 +22,7 @@ pipeline {
 					sh 'echo ${scanner_home}'
 					sh 'echo ${MAVEN_HOME}'
 					sh 'cat ${scanner_home}/conf/sonar-scanner.properties'
-					sh '${scanner_home}/bin/sonar-scanner'
+					sh '${scanner_home}/bin/sonar-scanner-debug'
                 }
             }
         }
