@@ -11,15 +11,16 @@ pipeline {
     stages {
         stage('SonarQube') {
             environment {
-                scanner_home = tool 'sonarqube-scanner'
+                def scanner_home = tool 'sonarqube-scanner'
             }
             steps {
-                // withSonarQubeEnv('sonar_server') {
-				withSonarQubeEnv('sonarqube-scanner') {
+                withSonarQubeEnv('sonar_server') {
                     // sh 'mvn clean package sonar:sonar'
 					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
-                    sh '${scanner_home}/bin/sonar-scanner'
+                    println ${env.SONAR_HOST_URL}
+					sh '${scanner_home}/bin/sonar-scanner'
+					// sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
                 }
             }
         }
