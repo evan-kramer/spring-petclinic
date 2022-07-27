@@ -14,7 +14,8 @@ pipeline {
                 scanner_home = tool 'sonarqube-scanner'
             }
             steps {
-                withSonarQubeEnv('sonar_server') {
+                // withSonarQubeEnv('sonar_server') {
+				withSonarQubeEnv('sonarqube-scanner') {
                     // sh 'mvn clean package sonar:sonar'
 					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
