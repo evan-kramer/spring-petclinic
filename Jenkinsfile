@@ -28,6 +28,7 @@ pipeline {
         // }
         stage('Build') {
             steps {
+                sh 'mvn spring-javaformat:apply clean install'
                 //sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml -B -DskipTests -Dserver.port=8081 clean package'
 				sh 'mvn -B -DskipTests -Dserver.port=8081 clean package'
             }
