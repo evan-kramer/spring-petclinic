@@ -14,11 +14,11 @@ pipeline {
                 def scanner_home = tool 'sonarqube-scanner'
             }
             steps {
-                withSonarQubeEnv('sonar_server') {
+                withSonarQubeEnv(installationName: 'sonar_server') {
                     // sh 'mvn clean package sonar:sonar'
 					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
-                    sh 'which sonar-scanner'
+                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 					// sh '${scanner_home}/bin/sonar-scanner'
                 }
             }
