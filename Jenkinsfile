@@ -22,9 +22,8 @@ pipeline {
 					
 					sh 'echo ${scanner_home}'
 					sh 'echo ${JAVA_HOME}'
-                    sh 'ls -l /var/jenkins_home/'
-					sh 'ls /opt/'
-					sh 'ls -l ${scanner_home}'
+                    sh 'ls -l /var/jenkins_home/tools'
+					sh 'ls -l ${scanner_home}/bin'
                     //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 					// sh './mvnw clean sonar:sonar'
 					sh '${scanner_home}/bin/sonarqube-scanner'
