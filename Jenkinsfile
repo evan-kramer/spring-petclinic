@@ -26,7 +26,7 @@ pipeline {
 					sh 'ls -l ${scanner_home}/bin'
                     //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 					// sh './mvnw clean sonar:sonar'
-					sh '${scanner_home}/bin/sonarqube-scanner'
+					sh '${scanner_home}/bin/sonar-scanner'
                 }
             }
         }
