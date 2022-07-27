@@ -19,7 +19,10 @@ pipeline {
                 withSonarQubeEnv(installationName: 'sonar_server') {
 					sh 'export SONAR_RUNNER_HOME=/opt/sonar-runner'
 					sh 'export PATH=$PATH:$SONAR_RUNNER_HOME/bin'
-					//sh 'echo ${scanner_home}'
+					sh 'echo ${scanner_home}'
+					sh 'echo "sonar.login=admin" >> ${scanner_home}/conf/sonar-scanner.properties'
+					sh 'echo "sonar.password=17646ass1" >> ${scanner_home}/conf/sonar-scanner.properties'
+					
 					//sh 'echo ${JAVA_HOME}'
                     //sh 'ls -l /var/jenkins_home/tools'
 					//sh 'ls -l ${scanner_home}/bin'
