@@ -10,22 +10,22 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('SonarQube') {
-            environment {
-                def scanner_home = tool 'sonarqube-scanner'
-				//def scanner_home = tool name: 'sonarqube-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-            }
-            steps {
-                withSonarQubeEnv(installationName: 'sonar_server') {
-					sh 'export SONAR_RUNNER_HOME=/opt/sonar-runner'
-					sh 'export PATH=$PATH:$SONAR_RUNNER_HOME/bin'
-					sh 'echo ${scanner_home}'
-					sh 'echo ${MAVEN_HOME}'
-					sh 'cat ${scanner_home}/conf/sonar-scanner.properties'
-					sh '${scanner_home}/bin/sonar-scanner-debug'
-                }
-            }
-        }
+        // stage('SonarQube') {
+        //     environment {
+        //         def scanner_home = tool 'sonarqube-scanner'
+		// 		//def scanner_home = tool name: 'sonarqube-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        //     }
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonar_server') {
+		// 			sh 'export SONAR_RUNNER_HOME=/opt/sonar-runner'
+		// 			sh 'export PATH=$PATH:$SONAR_RUNNER_HOME/bin'
+		// 			sh 'echo ${scanner_home}'
+		// 			sh 'echo ${MAVEN_HOME}'
+		// 			sh 'cat ${scanner_home}/conf/sonar-scanner.properties'
+		// 			sh '${scanner_home}/bin/sonar-scanner-debug'
+        //         }
+        //     }
+        // }
         stage('Build') {
             steps {
                 //sh 'mvn -f /var/jenkins_home/workspace/17646-assignment1/Assignments/1/test/spring-petclinic/pom.xml -B -DskipTests -Dserver.port=8081 clean package'
