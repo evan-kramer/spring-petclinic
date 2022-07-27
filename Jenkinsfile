@@ -15,11 +15,12 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv(installationName: 'sonar_server') {
-                    // sh 'mvn clean package sonar:sonar'
 					sh 'echo ${scanner_home}'
                     sh 'ls -l /var/jenkins_home/'
-                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-					// sh '${scanner_home}/bin/sonar-scanner'
+					sh 'ls -l ${scanner_home}'
+                    //sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+					// sh './mvnw clean sonar:sonar'
+					sh '${scanner_home}/bin/sonarqube-scanner'
                 }
             }
         }
