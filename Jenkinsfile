@@ -16,6 +16,7 @@ pipeline {
             steps {
                 withSonarQubeEnv(installationName: 'sonar_server') {
 					sh 'echo ${scanner_home}'
+					sh 'echo ${JAVA_HOME}'
                     sh 'ls -l /var/jenkins_home/'
 					sh 'ls /opt/'
 					sh 'ls -l ${scanner_home}'
