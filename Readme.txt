@@ -1,5 +1,7 @@
 # 1 Use provisioning tool to set up Ubuntu VM/container with Jenkins, Blue Ocean and SonarQube plugins
 Because of the challenges I had in automated provisioning, I also did some manual configurations, per Palash's suggestion.
+With that said, the docker-compose2.yml file successfully configures all the needed containers, networks, and volumes.
+You can run it with `docker compose -f docker-compose2.yml --detach`.
 
 # 1.1 Create bridge network to run containers
 docker network create 17646-assignment1
